@@ -1,24 +1,45 @@
 function deepcopy(obj,objToClone){
+    let arr=[]
     if(objToClone){
-        let temp=JSON.parse(JSON.stringify(objToClone))
-        obj=temp
+        for (const key in objToClone) {
+            if(typeof objToClone[key]==='function'){
+                // const fnclone=objToClone[key].bind({})
+                const fnclone=objToClone[key]
+                arr.push({fnclone,key})
+            }
+        }
+        const temp=JSON.parse(JSON.stringify(objToClone))
+
+        for (const arrKey of arr) {
+            temp[arrKey.key]=arrKey.fnclone
+        }
+        return temp
     }
-    return obj
+    throw Error('error')
 }
 
 let user ={
     name:'Vasya',
     password:'12345',
-    code:1421
+    code:1421,
+    foo:()=>{},
+    value:undefined,
+
 }
 
 let userClone= {}
 userClone=deepcopy(userClone,user)
+console.log(userClone)
+userClone= {...user}
+console.log(userClone)
+
+
 console.log(userClone===user)
 console.log(userClone.name ===user.name)
 userClone= {...user}
 console.log(userClone===user)
 console.log(userClone.name ===user.name)
+
 
 let coursesAndDurationArray = [
     {title: 'JavaScript Complex', monthDuration: 5},
@@ -30,3 +51,5 @@ let coursesAndDurationArray = [
 ];
 
 console.log(coursesAndDurationArray.map((course, index)=>({id:index+1,...course})));
+
+
