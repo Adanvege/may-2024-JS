@@ -5,7 +5,6 @@ let words=["Bibble", "Bumfuzzle", "Cattywampus", "Discombobulate", "Eellogofusci
     "Smeerp", "Snollygoster", "Thunder-plump", "Widdershins", "Xiphoid",
     "Yarborough", "Zenzizenzizenzic", "Agastopia", "Baboonery", "Cacodemonomania"]
 
-// console.log(words)
 let skip=0
 let btn1=document.createElement('button')
 let btn2=document.createElement('button')
@@ -51,15 +50,3 @@ btn2.onclick=function (){
         console.log(skip)
     }
 }
-
-// if (skip>0){
-//     skip-=10
-//     for (let i=skip;i<10;i++){
-//         let word=document.createElement('p')
-//         word.innerText=words[i]
-//         console.log(words[i])
-//         windowWords.appendChild(word)
-//     }
-// }else{
-//     alert('Wrong')
-// }
